@@ -1,8 +1,14 @@
 package com.procourier.model;
 
+import javax.persistence.*;
+
 import static java.util.Objects.requireNonNull;
 
-public final class Product {
+@Entity
+@Table(name = "products")
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long price;
     private String name;

@@ -1,10 +1,17 @@
 package com.procourier.model;
 
+import javax.persistence.*;
+
 import static java.util.Objects.requireNonNull;
 
-public final class Courier {
+@Entity
+@Table(name = "couriers")
+public class Courier {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String companyName;
+    @OneToOne(cascade = CascadeType.ALL)
     private Address headquarters;
     private Long pricePerDistance;
     private Long pricePerWeight;

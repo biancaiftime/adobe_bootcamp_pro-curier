@@ -12,6 +12,7 @@
     <modules>
         <module>core-model</module>
         <module>orders-service</module>
+        <module>h2-service</module>
     </modules>
 
     <properties>
@@ -20,6 +21,8 @@
         <core.model.version>1.0-SNAPSHOT</core.model.version>
         <orders.service.version>1.0-SNAPSHOT</orders.service.version>
         <spark.core.version>2.8.0</spark.core.version>
+        <h2.version>1.4.199</h2.version>
+        <eclipselink.version>2.7.4</eclipselink.version>
     </properties>
 
     <dependencyManagement>
@@ -38,6 +41,18 @@
                 <groupId>com.sparkjava</groupId>
                 <artifactId>spark-core</artifactId>
                 <version>${spark.core.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${h2.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.eclipse.persistence/org.eclipse.persistence.jpa -->
+            <dependency>
+                <groupId>org.eclipse.persistence</groupId>
+                <artifactId>org.eclipse.persistence.jpa</artifactId>
+                <version>${eclipselink.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

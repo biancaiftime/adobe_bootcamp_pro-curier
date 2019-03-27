@@ -1,12 +1,6 @@
 package com.procourier.app;
 
-import com.procourier.model.Address;
-import com.procourier.model.Buyer;
-import com.procourier.model.Courier;
-import com.procourier.model.Order;
-import com.procourier.model.OrderLine;
-import com.procourier.model.Product;
-import com.procourier.model.Seller;
+import com.procourier.model.*;
 import com.procourier.repository.CollectionRepository;
 import spark.Spark;
 

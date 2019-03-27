@@ -1,8 +1,14 @@
 package com.procourier.model;
 
+import javax.persistence.*;
+
 import static java.util.Objects.requireNonNull;
 
+@Entity
+@Table(name = "addresses")
 public class Address {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String region;
     private String city;
