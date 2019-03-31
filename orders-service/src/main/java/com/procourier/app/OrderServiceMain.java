@@ -1,6 +1,7 @@
 package com.procourier.app;
 
 import com.procourier.handlers.GetOrderByIdHandler;
+import com.procourier.handlers.GetOrdersHandler;
 import com.procourier.model.*;
 import com.procourier.repository.CollectionRepository;
 import main.MainApp;
@@ -16,6 +17,7 @@ public final class OrderServiceMain {
         final var repository = new CollectionRepository();
         final var handler = new OrdersHandler(repository);
         final var getOrderByIdHandler =  new GetOrderByIdHandler(OrderService.getInstance());
+        final var getOrdersHandler = new GetOrdersHandler(OrderService.getInstance());
 
         final Address address = new Address("DJ", "Craiova", "Nicolae Titulescu");
         final Seller seller = new Seller("Evomag", address);
@@ -39,5 +41,6 @@ public final class OrderServiceMain {
         //Spark.get("/orders/:id", handler);
 
         Spark.get("/orders/:id",getOrderByIdHandler);
+        Spark.get("/orders",getOrdersHandler);
     }
 }
