@@ -3,6 +3,7 @@ module h2.service {
     requires java.persistence;
     requires transitive core.model;
     requires java.sql;
+
     exports service;
     exports main;
 }

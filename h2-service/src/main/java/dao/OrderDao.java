@@ -6,8 +6,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class OrderDao {
-    private EntityManager em;
+
+public final class OrderDao {
+    private final EntityManager em;
 
     public OrderDao(EntityManager em) {
         this.em = em;
@@ -22,8 +23,9 @@ public class OrderDao {
     }
 
     public List<Order> getOrders() {
-        String sql = "SELECT o FROM Order o";
+        final String sql = "SELECT o FROM Order o";
         TypedQuery<Order> query = em.createQuery(sql, Order.class);
         return query.getResultList();
     }
+
 }

@@ -13,7 +13,8 @@
         <module>core-model</module>
         <module>orders-service</module>
         <module>h2-service</module>
-        <module>orders-service-client</module>
+        <module>orders-analytics</module>
+        <module>example_reflection</module>
     </modules>
 
     <properties>
@@ -26,7 +27,7 @@
         <h2.version>1.4.199</h2.version>
         <eclipselink.version>2.7.4</eclipselink.version>
         <gson.version>2.8.5</gson.version>
-        <slf4f.version>1.7.8</slf4f.version>
+        <slf4j.version>1.7.8</slf4j.version>
     </properties>
 
     <dependencyManagement>
@@ -43,11 +44,6 @@
             </dependency>
             <dependency>
                 <groupId>com.procourier</groupId>
-                <artifactId>orders-service-client</artifactId>
-                <version>${orders.service.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.procourier</groupId>
                 <artifactId>h2-service</artifactId>
                 <version>${h2.service.version}</version>
             </dependency>
@@ -56,13 +52,11 @@
                 <artifactId>spark-core</artifactId>
                 <version>${spark.core.version}</version>
             </dependency>
-            <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
             <dependency>
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
                 <version>${h2.version}</version>
             </dependency>
-            <!-- https://mvnrepository.com/artifact/org.eclipse.persistence/org.eclipse.persistence.jpa -->
             <dependency>
                 <groupId>org.eclipse.persistence</groupId>
                 <artifactId>org.eclipse.persistence.jpa</artifactId>
@@ -76,7 +70,12 @@
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-simple</artifactId>
-                <version>${slf4f.version}</version>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.procourier</groupId>
+                <artifactId>orders-service-client</artifactId>
+                <version>${orders.service.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

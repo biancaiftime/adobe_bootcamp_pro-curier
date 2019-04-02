@@ -9,14 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>orders-service-client</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>com.procourier</groupId>
+    <artifactId>orders-analytics</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>com.procourier</groupId>
-            <artifactId>orders-service</artifactId>
-        </dependency>
         <dependency>
             <groupId>com.procourier</groupId>
             <artifactId>core-model</artifactId>
@@ -25,7 +21,10 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.sparkjava</groupId>
+            <artifactId>spark-core</artifactId>
+        </dependency>
     </dependencies>
-
 
 </project>
