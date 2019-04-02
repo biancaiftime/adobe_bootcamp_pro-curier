@@ -9,11 +9,11 @@ import spark.Route;
 
 import static java.lang.Long.valueOf;
 
-public class GetOrderByIdHandler implements Route{
-    private OrderService orderService;
-    private Gson gson = new Gson();
+public final class OrderByIdHandler implements Route {
+    private final OrderService orderService;
+    private final Gson gson = new Gson();
 
-    public GetOrderByIdHandler(OrderService orderService) {
+    public OrderByIdHandler(OrderService orderService) {
         this.orderService = orderService;
     }
 

@@ -13,7 +13,7 @@
         <module>core-model</module>
         <module>orders-service</module>
         <module>h2-service</module>
-        <module>orders-service-client</module>
+        <module>orders-analytics</module>
         <module>example_reflection</module>
     </modules>
 
@@ -77,8 +77,6 @@
                 <artifactId>orders-service-client</artifactId>
                 <version>${orders.service.version}</version>
             </dependency>
-
-
         </dependencies>
     </dependencyManagement>
 

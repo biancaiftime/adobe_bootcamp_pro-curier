@@ -5,44 +5,53 @@ import dao.OrderDao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.util.List;
+import java.util.function.Consumer;
 
 //http://www.learn4master.com/design-pattern/java-singleton-pattern
 
-public class OrderService {
-    private EntityManagerFactory emf;
-    private OrderService(){
-        this.emf = Persistence.createEntityManagerFactory("pro-courierPU");
+public final class OrderService {
+    private final EntityManagerFactory emf;
+
+    private static final String PERSISTENCE_UNIT_NAME = "pro-courierPU";
+
+    private OrderService() {
+        this.emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
     }
 
-    private final static class SingletonHolder{
-        private final static OrderService instance = new OrderService();
+    private final static class SingletonHolder {
+        private final static OrderService INSTANCE = new OrderService();
     }
 
-    public static OrderService getInstance(){
-        return SingletonHolder.instance;
+    public static OrderService getInstance() {
+        return SingletonHolder.INSTANCE;
     }
 
-    public void addOrder(Order order){
-        EntityManager em = emf.createEntityManager();
-        OrderDao orderDao = new OrderDao(em);
+    public void addOrder(Order order) {
+        final EntityManager em = emf.createEntityManager();
+        final OrderDao orderDao = new OrderDao(em);
 
         //orice modif de INSERT, UPDATE, DELETE se face intr-o tranzactie
-        em.getTransaction().begin();
-        orderDao.addOrder(order);
-        em.getTransaction().commit();
+        runInTransaction(order, orderDao::addOrder, em.getTransaction());
     }
 
-   public Order getOrderById(Long id){
-       EntityManager em = emf.createEntityManager();
-       OrderDao orderDao = new OrderDao(em);
-       return orderDao.getOrderById(id);
-   }
+    private static void runInTransaction(Order order, Consumer<Order> operation, EntityTransaction transaction) {
+        transaction.begin();
+        operation.accept(order);
+        transaction.commit();
+    }
 
-   public List<Order> getOrders(){
-       EntityManager em = emf.createEntityManager();
-       OrderDao orderDao = new OrderDao(em);
-       return orderDao.getOrders();
-   }
+    public Order getOrderById(Long id) {
+        final var em = emf.createEntityManager();
+        final var orderDao = new OrderDao(em);
+        return orderDao.getOrderById(id);
+    }
+
+    public List<Order> getOrders() {
+        final var em = emf.createEntityManager();
+        final var orderDao = new OrderDao(em);
+        return orderDao.getOrders();
+    }
 }
